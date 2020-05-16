@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>小可爱-爱你的宝宝</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="css/animate.css" />
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fa081c16;
+            overflow: auto
+        }
+
+        #content {
+            width: 100%;
+            height: 100%
+        }
+
+        #loveHeart {
+            width: 100%;
+            height: 100%
+        }
+
+        #garden {
+            width: 100%;
+            height: 100%
+        }
+
+        #elapseClock {
+            text-align: right;
+            font-size: 18px;
+            margin-top: 10px;
+            margin-bottom: 10px
+        }
+
+        #words {
+            color: #999999;
+            font-size: 20px;
+        }
+
+        #messages {
+            display: none
+        }
+
+        #signature {
+            margin-left: 99px;
+        }
+
+        .item {
+            max-width: 65%;
+            padding: 1em;
+            background: #eee;
+            display: none;
+            position: relative;
+            -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+            border-radius: 3px;
+            color: #000;
+        }
+    </style>
+
+<body>
+    <div id="content">
+        <div id="loveHeart">
+            <canvas id="garden"></canvas>
+            <div id="words">
+                <div id="messages">
+                    小可爱, 我们已经在一起
+                    <div id="elapseClock"></div>
+                    <div id="signature">爱你的宝宝</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="item" class="item"></div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/garden.js"></script>
+    <script type="text/javascript" src="js/function.js"></script>
+    <script type="text/javascript" src="js/popup.js"></script>
+    <script type="text/javascript">
+        var offsetX = $("#loveHeart").width() / 2;
+        var offsetY = $("#loveHeart").height() / 2 + 20;
+        var together = new Date(2020, 04, 09);
+        adjustWordsPosition();
+        startHeartAnimation();
+        setInterval(function () {
+            timeElapse(together);
+        }, 500);
+    </script>
+</body>
+
+</html>
