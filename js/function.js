@@ -12,6 +12,10 @@ $(function () {
     gardenCtx.globalCompositeOperation = "lighter";
     garden = new Garden(gardenCtx, gardenCanvas);
     setInterval(function () { garden.render() }, Garden.options.growSpeed)
+
+    $('#elapseClock').click(function(){
+        location.href = ''
+    })
 });
 $(window).resize(function () {
     var b = $(window).width();
@@ -89,10 +93,12 @@ function showLoveU() {
     month = new Date().getMonth() + 1
     day = new Date().getDate()
     $('#item').load('./letters/' + year + month + day + '.html', function (e) {
-        $('#item').popup({
-            time: 1000,
-            classAnimateShow: 'flipInX',
-            classAnimateHide: 'hinge',
-        });
+        if ($('#item').html()) {
+            $('#item').popup({
+                time: 1000,
+                classAnimateShow: 'flipInX',
+                classAnimateHide: 'hinge',
+            });
+        }
     })
-};
+}

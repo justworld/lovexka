@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>和小可爱的时间线</title>
+    <style>
+        *,
+        *:after,
+        *:before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            font-size: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .main {
+            width: 95%;
+            max-width: 69em;
+            margin: 0 auto;
+            padding: 0 1.875em 3.125em;
+        }
+
+        .cbp_tmtimeline {
+            margin: 30px 0 0 0;
+            padding: 0;
+            list-style: none;
+            position: relative;
+        }
+
+        /* The line */
+        .cbp_tmtimeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 10px;
+            background: rgba(250, 8, 28, 0.086);
+            left: 10%;
+        }
+
+        /* The date/time */
+        .cbp_tmtimeline>li .cbp_tmtime {
+            display: block;
+            padding-right: 100px;
+            position: absolute;
+        }
+
+        .cbp_tmtimeline>li .cbp_tmtime span {
+            display: block;
+            text-align: right;
+            color: #999520;
+        }
+
+        .cbp_tmtimeline>li .cbp_tmtime span:first-child {
+            font-size: 0.9em;
+        }
+
+        .cbp_tmtimeline>li .cbp_tmtime span:last-child {
+            font-size: 1.9em;
+        }
+
+        /* Right content */
+        .cbp_tmtimeline>li .cbp_tmlabel {
+            margin: 0 0 15px 15%;
+            background: rgba(250, 8, 28, 0.086);
+            color: #999520;
+            padding: 2em;
+            font-size: 0.9em;
+            font-weight: 300;
+            position: relative;
+            border-radius: 5px;
+            line-height: 1.314;
+        }
+
+        .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel {
+            background: rgba(250, 8, 28, 0.086);
+        }
+
+        /* The triangle */
+        .cbp_tmtimeline>li .cbp_tmlabel:after {
+            right: 100%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-right-color: #fa081c16;
+            border-width: 10px;
+            top: 10px;
+        }
+
+        .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel:after {
+            border-right-color: #fa081c16;
+        }
+
+        #temp {
+            display: none;
+        }
+
+        @media screen and (max-width: 47.2em) {
+            .cbp_tmtimeline:before {
+                display: none;
+            }
+
+            .cbp_tmtimeline>li .cbp_tmtime {
+                width: 100%;
+                position: relative;
+                padding: 0 0 20px 0;
+            }
+
+            .cbp_tmtimeline>li .cbp_tmtime span {
+                text-align: left;
+            }
+
+            .cbp_tmtimeline>li .cbp_tmlabel {
+                margin: 0 0 30px 0;
+                padding: 1em;
+                font-weight: 400;
+                font-size: 95%;
+            }
+
+            .cbp_tmtimeline>li .cbp_tmlabel:after {
+                right: auto;
+                left: 20px;
+                border-right-color: transparent;
+                border-bottom-color: #fa081c16;
+                top: -20px;
+            }
+
+            .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel:after {
+                border-right-color: transparent;
+                border-bottom-color: #fa081c16;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <ul class="cbp_tmtimeline" id="timeline">
+            </ul>
+            <div id="temp"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        var times = [{ "year": 2020, "date": '05/16', "url": 'letters/2020517.html' },
+        { "year": 2020, "date": '05/17', "url": 'letters/2020517.html' },
+        { "year": 2020, "date": '05/18', "url": 'letters/2020517.html' }]
+        for (var i in times) {
+            $('#temp').load(times[i].url, function () {
+                htmlstr = $('#temp').html()
+                console.log(htmlstr)
+                $('#temp').empty()
+                if (htmlstr) {
+                    $('#timeline').append('<li><div class="cbp_tmtime"><span>' + times[i].year + '</span><span>' + times[i].date + '</span></div><div class="cbp_tmlabel">' + htmlstr + '</div><li>')
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
