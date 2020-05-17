@@ -154,19 +154,24 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        var times = [{ "year": 2020, "date": '05/16', "url": 'letters/2020517.html' },
-        { "year": 2020, "date": '05/17', "url": 'letters/2020517.html' },
-        { "year": 2020, "date": '05/18', "url": 'letters/2020517.html' }]
-        for (var i in times) {
-            $('#temp').load(times[i].url, function () {
+        var times = [{ "year": 2020, "date": '05/20', "url": 'letters/2020520.html' },
+        { "year": 2020, "date": '05/10', "url": 'letters/2020510.html' }]
+        function loadLetter(i) {
+            let year = times[i].year
+            let date = times[i].date
+            let url = times[i].url
+            $('#temp').load(url, function () {
                 htmlstr = $('#temp').html()
-                console.log(htmlstr)
                 $('#temp').empty()
                 if (htmlstr) {
-                    $('#timeline').append('<li><div class="cbp_tmtime"><span>' + times[i].year + '</span><span>' + times[i].date + '</span></div><div class="cbp_tmlabel">' + htmlstr + '</div><li>')
+                    $('#timeline').append('<li><div class="cbp_tmtime"><span>' + year + '</span><span>' + date + '</span></div><div class="cbp_tmlabel">' + htmlstr + '</div><li>')
+                }
+                if (i < times.length - 1) {
+                    loadLetter(i + 1)
                 }
             })
         }
+        loadLetter(0)
     </script>
 </body>
 
