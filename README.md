@@ -20,4 +20,4 @@ var times = [{ "year": 2020, "date": '05/16', "url": 'letters/2020517.html' },
 ![](https://github.com/justworld/lovexka/blob/master/imgs/3.png)
 
 ### 4、最后
-生活不止眼前的苟且，试着去制造浪漫，祝有钱人终成眷属！
+生活不止眼前的苟且，试着去制造浪漫，祝有情人终成眷属！
